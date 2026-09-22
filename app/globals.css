@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light theme — warm paper white */
+  --background: #faf9f6;
+  --surface: #ffffff;
+  --surface-muted: #f1efe9;
+  --foreground: #16181d;
+  --muted-foreground: #5f6570;
+  --accent: #2d5f8f;
+  --accent-strong: #22496e;
+  --accent-foreground: #ffffff;
+  --line: rgba(22, 24, 29, 0.12);
+  --card-line: rgba(22, 24, 29, 0.08);
+  --shadow: 0 1px 2px rgba(22, 24, 29, 0.04), 0 8px 24px rgba(22, 24, 29, 0.06);
+  --chart-grid: rgba(22, 24, 29, 0.08);
+  --chart-line: #2d5f8f;
+  --chart-area: rgba(45, 95, 143, 0.12);
+  --chart-bar: rgba(45, 95, 143, 0.55);
+  --chart-bar-muted: rgba(22, 24, 29, 0.16);
+}
+
+.dark {
+  /* Dark theme — deep graphite */
+  --background: #131518;
+  --surface: #1a1d21;
+  --surface-muted: #212529;
+  --foreground: #eceef1;
+  --muted-foreground: #a3a9b3;
+  --accent: #7fa8cd;
+  --accent-strong: #a5c4de;
+  --accent-foreground: #131518;
+  --line: rgba(236, 238, 241, 0.14);
+  --card-line: rgba(236, 238, 241, 0.09);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --chart-grid: rgba(236, 238, 241, 0.08);
+  --chart-line: #7fa8cd;
+  --chart-area: rgba(127, 168, 205, 0.12);
+  --chart-bar: rgba(127, 168, 205, 0.6);
+  --chart-bar-muted: rgba(236, 238, 241, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-line: var(--line);
+  --color-card-line: var(--card-line);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-grotesk), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --shadow-card: var(--shadow);
+
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-rise-in: rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
